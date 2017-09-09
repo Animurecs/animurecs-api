@@ -2,7 +2,7 @@ class User < ApplicationRecord
   validates :email,
     presence: true,
     format: {
-      with: /.*@.*\..*/,
+      with: /\A.*@.*\..*\z/,
       message: "Must be a valid email address"
     },
     length: {
