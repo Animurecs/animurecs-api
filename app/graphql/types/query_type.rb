@@ -1,7 +1,5 @@
 Types::QueryType = GraphQL::ObjectType.define do
   name "Query"
-  # Add root-level fields here.
-  # They will be entry points for queries on your schema.
 
   field :users, !types[Types::UserType] do
     description "All users"
@@ -12,10 +10,10 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :user do
     type Types::UserType
-    argument :email, !types.String
-    description "Find a user by email"
+    argument :username, !types.String
+    description "Find a user by username"
     resolve ->(_obj, args, _ctx) {
-      User.find_by_email(args["email"])
+      User.find_by_username(args["username"])
     }
   end
 end
