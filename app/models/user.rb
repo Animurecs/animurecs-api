@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+  devise :confirmable,
+    :database_authenticatable,
+    :lockable,
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :trackable,
+    :validatable
+
   validates :email,
     presence: true,
     format: {
